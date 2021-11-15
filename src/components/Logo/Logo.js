@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 
 const Link = styled.a`
   font-family: var(--font-family-logo);
-  font-size: 3rem;
+  font-size: clamp(3rem, 3vw + 1rem, 5rem)
 `;
 
 const TodaysDate = styled.p`

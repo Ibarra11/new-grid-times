@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-
+import { QUERIES } from '../../constants';
 import {
   MAIN_STORY,
   OPINION_STORIES,
@@ -21,9 +21,12 @@ const MainStoryGrid = () => {
       </MainStorySection>
 
       <SecondaryStorySection>
+        
         <StoryList>
           {SECONDARY_STORIES.map((story, index) => (
-            <SecondaryStory key={story.id} {...story} />
+            <VerticalStoryDivider key={story.id}>
+            <SecondaryStory  {...story} />
+            </VerticalStoryDivider>
           ))}
         </StoryList>
       </SecondaryStorySection>
@@ -32,7 +35,9 @@ const MainStoryGrid = () => {
         <SectionTitle>Opinion</SectionTitle>
         <StoryList>
           {OPINION_STORIES.map((story, index) => (
-            <OpinionStory key={story.id} {...story} />
+            <VerticalStoryDivider  key={story.id}>
+            <OpinionStory {...story} />
+            </VerticalStoryDivider>
           ))}
         </StoryList>
       </OpinionSection>
@@ -61,15 +66,35 @@ const MainStorySection = styled.section`
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+
 `;
 
 const StoryList = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 16px;
+  
+
 `;
+
+const VerticalStoryDivider = styled.div`
+  &:not(:last-of-type){
+   border-bottom: 1px solid var(--color-gray-300);
+  padding-bottom: 16px;
+  }
+ 
+`;
+
 
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+  border: 1px solid red;
+
+  @media ${ QUERIES.tabletOnly}{
+   & ${StoryList}{
+      grid-template-columns: repeat()(4, 1fr);
+      grid-auto-flow: column;
+    }
+  }
 `;
 
 const AdvertisementSection = styled.section`

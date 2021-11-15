@@ -21,13 +21,14 @@ const Wrapper = styled.article`
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
+ 
 `;
 
 const Image = styled.img`
   grid-area: image;
   display: block;
   width: 100%;
-  height: 120px;
+  height: 100%;
   border-radius: 4px;
   object-fit: cover;
 `;
@@ -43,8 +44,14 @@ const Heading = styled.h2`
 
 const Abstract = styled.p`
   grid-area: abstract;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
   font-size: 1rem;
   white-space: pre-wrap;
+
+
 `;
 
 export default SecondaryStory;
